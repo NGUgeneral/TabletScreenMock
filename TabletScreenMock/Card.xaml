@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="TabletScreenMock.Card"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TabletScreenMock"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="100" Width="100" Height="200" HorizontalAlignment="Left">
+    <Grid Background="#FFFFEBB5" Margin="5">
+		<TextBlock x:Name="Title" Height="20" Margin="10,25,10,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+
+	</Grid>
+</UserControl>

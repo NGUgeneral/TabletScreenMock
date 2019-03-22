@@ -54,5 +54,17 @@ namespace TabletScreenMock
 		{
 			ActionTitleParser(((Button)sender).Name);
 		}
+
+		private void PickCard_Click(object sender, RoutedEventArgs e)
+		{
+			CardZone.AddCard(new Card());
+			ActionTitleParser(((Button)sender).Name);
+		}
+
+		private void RemoveCard_Click(object sender, RoutedEventArgs e)
+		{
+			CardZone.RemoveCard();
+			ActionTitleParser(((Button)sender).Name);
+		}
 	}
 }
