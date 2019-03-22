@@ -6,20 +6,16 @@
              xmlns:local="clr-namespace:TabletScreenMock"
              mc:Ignorable="d" 
              d:DesignHeight="720" d:DesignWidth="1280" Width="1280" Height="720">
-	<Grid x:Name="Desktop" Background="White">
-		<Button x:Name="SwipeLeft" Content="Swipe Left" HorizontalAlignment="Left" Width="150" Click="SwipeLeft_Click" Margin="0,50"/>
-		<Button x:Name="SwipeRight" Content="Swipe Right" HorizontalAlignment="Right" Width="150" Click="SwipeRight_Click" Margin="0,50"/>
-		<Button x:Name="SwipeUp" Content="Swipe Up" Height="50" VerticalAlignment="Bottom" Click="SwipeUp_Click"/>
-		<Button x:Name="DragUp" Content="Drag Up" Height="50" VerticalAlignment="Top" Click="DragUp_Click"/>
-		<Button x:Name="DragDown" Content="Drag Down" Click="DragDown_Click" Margin="150,620,150,50" Height="50"/>
-		<Grid x:Name="GameArea" Margin="150,50,150,100">
-			<Grid.RowDefinitions>
-				<RowDefinition/>
-			</Grid.RowDefinitions>
+	<Grid x:Name="Desktop">
+		<Button x:Name="SwipeLeft" Content="Swipe Left" HorizontalAlignment="Left" Width="150" Click="SwipeLeft_Click" Margin="0,50" AllowDrop="True" Drop="SwipeLeft_Drop"/>
+		<Button x:Name="SwipeRight" Content="Swipe Right" HorizontalAlignment="Right" Width="150" Click="SwipeRight_Click" Margin="0,50" AllowDrop="True" Drop="SwipeRight_Drop"/>
+		<Button x:Name="SwipeUp" Content="Swipe Up" Height="50" VerticalAlignment="Bottom" Click="SwipeUp_Click" AllowDrop="True" Drop="SwipeUp_Drop"/>
+		<Button x:Name="DragUp" Content="Drag Up" Height="50" VerticalAlignment="Top" Click="DragUp_Click" AllowDrop="True" Drop="DragUp_Drop"/>
+		<Button x:Name="DragDown" Content="Drag Down" Click="DragDown_Click" Margin="150,620,150,50" Height="50" AllowDrop="True" Drop="DragDown_Drop"/>
+		<Grid x:Name="GameArea" Margin="150,50,150,100" AllowDrop="True"  Drop="GameArea_Drop" Background="White">
 			<local:CardsZoneControl x:Name="CardZone" Height="210" Margin="10,0,10,70" VerticalAlignment="Bottom"/>
 			<TextBlock x:Name="ActionTitle" Margin="10,10,0,0" TextWrapping="Wrap" FontSize="36" Text="Click any button" Height="57.884" VerticalAlignment="Top" HorizontalAlignment="Left"/>
-			<Button x:Name="PickCard" Content="Add Card" HorizontalAlignment="Right" Height="55" Margin="0,0,245,10" VerticalAlignment="Bottom" Width="230" Click="PickCard_Click"/>
-			<Button x:Name="RemoveCard" Content="Remove Card" HorizontalAlignment="Right" Height="55" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="230" Click="RemoveCard_Click"/>
+			<Button x:Name="PickCard" Content="Add Card" HorizontalAlignment="Right" Height="55" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="230" Click="PickCard_Click"/>
 		</Grid>
 	</Grid>
 </UserControl>

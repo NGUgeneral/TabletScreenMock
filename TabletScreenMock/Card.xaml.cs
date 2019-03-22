@@ -21,16 +21,31 @@ namespace TabletScreenMock
   public partial class Card : UserControl
   {
 		private static Random random = new Random();
+		public string Id { get; }
 
     public Card()
     {
       InitializeComponent();
+			Id = random.Next(100).ToString();
 			LoadCustomContent();
     }
 
 		private void LoadCustomContent()
 		{
-			Title.Text = $@"Card: {random.Next(100).ToString()}";
+			Title.Text = $@"Card: {Id}";
+		}
+
+		private void Area_MouseMove(object sender, MouseEventArgs e)
+		{
+			base.OnMouseMove(e);
+			if (e.LeftButton == MouseButtonState.Pressed)
+			{
+				// Package the data.
+				var data = new DataObject(this);
+
+				// Inititate the drag-and-drop operation.
+				DragDrop.DoDragDrop(this, data, DragDropEffects.All);
+			}
 		}
 	}
 }

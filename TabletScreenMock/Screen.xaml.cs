@@ -1,17 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace TabletScreenMock
 {
@@ -25,46 +13,77 @@ namespace TabletScreenMock
         InitializeComponent();
     }
 
-		private void ActionTitleParser(string text)
+		private void ActionTitleParser(object sender)
 		{
-			ActionTitle.Text = $@"You have clicked: {text}";
+			ActionTitle.Text = $@"You have clicked: {((Button)sender).Name}";
+		}
+
+		private void DropParser(string senderName, DragEventArgs e)
+		{
+			var card = (Card)e.Data.GetData(e.Data.GetFormats()[0]);
+			ActionTitle.Text = $@"You have dropped card {(card).Id} to {senderName}";
+			CardZone.RemoveCard(card);
 		}
 
 		private void SwipeLeft_Click(object sender, RoutedEventArgs e)
 		{
-			ActionTitleParser(((Button)sender).Name);
+			ActionTitleParser(sender);
+		}
+
+		private void SwipeLeft_Drop(object sender, DragEventArgs e)
+		{
+			DropParser(((Button)sender).Name, e);
 		}
 
 		private void SwipeRight_Click(object sender, RoutedEventArgs e)
 		{
-			ActionTitleParser(((Button)sender).Name);
+			ActionTitleParser(sender);
+		}
+
+		private void SwipeRight_Drop(object sender, DragEventArgs e)
+		{
+			DropParser(((Button)sender).Name, e);
 		}
 
 		private void SwipeUp_Click(object sender, RoutedEventArgs e)
 		{
-			ActionTitleParser(((Button)sender).Name);
+			ActionTitleParser(sender);
+		}
+
+		private void SwipeUp_Drop(object sender, DragEventArgs e)
+		{
+			DropParser(((Button)sender).Name, e);
 		}
 
 		private void DragUp_Click(object sender, RoutedEventArgs e)
 		{
-			ActionTitleParser(((Button)sender).Name);
+			ActionTitleParser(sender);
+		}
+
+		private void DragUp_Drop(object sender, DragEventArgs e)
+		{
+			DropParser(((Button)sender).Name, e);
 		}
 
 		private void DragDown_Click(object sender, RoutedEventArgs e)
 		{
-			ActionTitleParser(((Button)sender).Name);
+			ActionTitleParser(sender);
+		}
+
+		private void DragDown_Drop(object sender, DragEventArgs e)
+		{
+			DropParser(((Button)sender).Name, e);
+		}
+
+		private void GameArea_Drop(object sender, DragEventArgs e)
+		{
+			DropParser(((Grid)sender).Name, e);
 		}
 
 		private void PickCard_Click(object sender, RoutedEventArgs e)
 		{
 			CardZone.AddCard(new Card());
-			ActionTitleParser(((Button)sender).Name);
-		}
-
-		private void RemoveCard_Click(object sender, RoutedEventArgs e)
-		{
-			CardZone.RemoveCard();
-			ActionTitleParser(((Button)sender).Name);
+			ActionTitleParser(sender);
 		}
 	}
 }
