@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -40,11 +41,7 @@ namespace TabletScreenMock
 			base.OnMouseMove(e);
 			if (e.LeftButton == MouseButtonState.Pressed)
 			{
-				// Package the data.
-				var data = new DataObject(this);
-
-				// Inititate the drag-and-drop operation.
-				DragDrop.DoDragDrop(this, data, DragDropEffects.All);
+				DragDrop.DoDragDrop(this, new DataObject(this), DragDropEffects.Move);
 			}
 		}
 	}

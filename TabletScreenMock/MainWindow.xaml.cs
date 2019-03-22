@@ -29,6 +29,12 @@ namespace TabletScreenMock
 		private void LoadCustomComponents()
 		{
 			this.AddChild(new Screen());
+			this.Loaded += MainWindow_Loaded;
+		}
+
+		void MainWindow_Loaded(object sender, RoutedEventArgs e) {
+			this.MinWidth = this.Width;
+			this.MinHeight = this.Height;
 		}
 	}
 }
